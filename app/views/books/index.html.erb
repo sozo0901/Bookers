@@ -14,9 +14,9 @@
     <tr>
      <td><%= book.title %></td>
       <td><%= book.body %></td>
-      <td><a href="/books/:id">Show</a></td>
-      <td><a href="/books/edit">Edit</a></td>
-      <td>destroy</td>
+      <td><%= link_to "Show", "/books/#{book.id}" %></td>
+      <td><%= link_to "Edit", "/books/#{book.id}/edit" %></td>
+      <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
     </tr>
   </tbody>
   <% end %>
@@ -27,6 +27,8 @@
 
 
 <h2>New book</h2>
+
+
 <%= form_with model:@book, local:true do |f| %>
 
   <h4>Title</h4>
